@@ -19,6 +19,10 @@ struct AuthService{
     
     static let shared = AuthService()
     
+    func loginUserIn(withEmail email: String, password: String, completion: @escaping (AuthDataResult? , Error?) -> Void){
+        Auth.auth().signIn(withEmail: email, password: password, completion: completion)
+    }
+    
     func registerUser(credentials: AuthCredentials, completion: @escaping (Error?, DatabaseReference) -> Void){
         
         let email = credentials.email
