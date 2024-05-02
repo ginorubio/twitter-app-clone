@@ -31,6 +31,10 @@ class MainTabController: UITabBarController{
     }
     
     //MARK: - API
+    
+    func fetchUser(){
+        UserService.shared.fetchUser()
+    }
     func authenticateUserAndConfigureUI(){
         if Auth.auth().currentUser == nil {
             print("DEBUG: User is not logged in..")
@@ -44,6 +48,7 @@ class MainTabController: UITabBarController{
             print("DEBUG: User is logged in..")
             configureUI()
             configureViewControllers()
+            fetchUser()
         }
     }
     
